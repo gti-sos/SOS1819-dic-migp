@@ -19,7 +19,7 @@ API.populationStats(app, BASE_PATH);
 
 app.use("/", express.static(path.join(__dirname,"/public")));
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@mangalper1-o8j8b.mongodb.net/mangalper1?retryWrites=true";
