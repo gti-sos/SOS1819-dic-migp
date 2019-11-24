@@ -10,7 +10,7 @@ client.connect(err => {
   // perform actions on the collection object
 });
 
-module.exports = function(app, BASE_PATH){
+module.exports = function(app, BASE_PATH){ 
     var path = "";
     var newPopulationStats = [{
         country: "Spain",
