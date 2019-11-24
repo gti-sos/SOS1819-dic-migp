@@ -1,0 +1,133 @@
+<center>
+        <h2>Estadísticas de población
+        </h2>
+    </center>
+    
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+</head>
+
+    <div class="row" style="border: 2px solid black;">
+        <div class="col-sm">
+            <h6>Búsqueda por fechas:</h6>
+        </div>
+        <div class="row">
+
+            <div class="col-sm">
+                <input type="text" placeholder="Desde" class="form-control" ng-model="from" />
+            </div>
+            <div class="col-sm">
+                <input type="text" placeholder="Hasta" class="form-control" ng-model="to" />
+            </div>
+            <div class="col-sm">
+                <button class="btn btn-primary" ng-click="buscarDesdeHasta(from, to)">Buscar</button>
+            </div>
+        </div>
+    </div>
+    
+<div style="overflow-x:auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    País
+                </th>
+                <th>
+                    Año
+                </th>
+                <th>
+                    Población
+                </th>
+                <th>
+                    Densidad
+                </th>
+                <th>
+                    Natalidad
+                </th>
+                <th>
+                    Mortalidad
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="populationStat in populationStats">
+                <td><a href="#!/ui/v1/population-stats/edit/{{ populationStat.country }}/{{ populationStat.year }}">{{ populationStat.country }}</a></td>
+                <td>{{ populationStat.year }}</td>
+                <td>{{ populationStat.population }}</td>
+                <td>{{ populationStat.density }}</td>
+                <td>{{ populationStat.natality }}</td>
+                <td>{{ populationStat.mortality }}</td>
+                <td>
+                    <button class="btn btn-warning" ng-click="deleterate(populationStat.country, populationStat.year)" value="delete">Borrar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="form-control" placeholder="new country" value="new country" ng-model="newRate.country" />
+                </td>
+                
+                <td>
+                    <input type="text" class="form-control" placeholder="new year" value="new year" ng-model="newRate.year" />
+                </td>
+
+                <td>
+                    <input type="text" class="form-control" placeholder="new population" value="new population" ng-model="newRate.population" />
+                </td>
+
+                <td>
+                    <input type="text" class="form-control" placeholder="new density" value="new density" ng-model="newRate.density" />
+                </td>
+
+                <td>
+                    <input type="text" class="form-control" placeholder="new natality" value="new natality" ng-model="newRate.natality" />
+                </td>
+
+                <td>
+                    <input type="text" class="form-control" placeholder="new mortality" value="new mortality" ng-model="newRate.mortality" />
+                </td>
+                <td>
+                    <button class="btn btn-primary" ng-click="addNewRate()" value="add">Añadir nuevo</button>
+                </td>
+            </tr>
+           
+            
+        </tbody>
+    </table>
+</div>
+    <center>
+    <div class="ng-scope">
+        <button class="button btn-secondary" ng-click="anterior()" value="anterior"> Anterior </button>
+        <button class="button btn-secondary" ng-click="siguiente()" value="siguiente"> Siguiente </button>
+    <div class="row">
+    </center>
+        <div class="col-sm">
+            <button class="btn btn-info" ng-click="cargaInicial()">Cargar Datos</button>
+        </div>
+        <div class="col-sm">
+            <button class="btn btn-danger" ng-click="deleteAllData()">Borrar Todo</button>
+        </div>
+    </div>
+    <div class="col-xs-5" style="width: 30%">
+            <label class="input-lg" for="mensaje">Mensaje</label>
+            <textarea class="form-control" rows="1" ng-model="mensaje">
+                <p> Mensaje : {{ mensaje }}</p>
+            </textarea>
+    </div>
+    <div class="col-xs-5" style="width: 30%">
+            <label class="input-lg" for="stateCode">Código de estado</label>
+            <textarea class="form-control" rows="1" ng-model="stateCode"></textarea>
+    </div>
+
+  
