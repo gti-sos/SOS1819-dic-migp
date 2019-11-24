@@ -1,0 +1,83 @@
+<center>
+        <h2>Editar estadística de población
+        </h2>
+    </center>
+    
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+</head>
+    
+<div style="overflow-x:auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    País
+                </th>
+                <th>
+                    Año
+                </th>
+                <th>
+                    Población
+                </th>
+                <th>
+                    Densidad
+                </th>
+                <th>
+                    Natalidad
+                </th>
+                <th>
+                    Mortalidad
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+                <td>{{ populationStat.country }}</td>
+                <td>{{ populationStat.year }}</td>
+                    
+                <td>
+                    <input 
+                        class=form-control
+                        ng-model=populationStat.population
+                    />
+                </td>
+                <td>
+                    <input 
+                        class=form-control
+                        ng-model=populationStat.density
+                    />
+                </td>
+                <td>
+                    <input 
+                        class=form-control
+                        ng-model=populationStat.natality
+                    />
+                </td>
+                <td>
+                    <input 
+                        class=form-control
+                        ng-model=populationStat.mortality
+                    />
+                </td>
+                <td>
+                    <button class="btn btn-secondary" ng-click="updaterate(populationStat.country, populationStat.year)">Actualizar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+   
+
+  

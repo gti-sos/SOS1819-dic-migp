@@ -141,7 +141,7 @@ module.exports = function(app, BASE_PATH){
  // GET /population-stats/docs/
     path = BASE_PATH + "/population-stats/docs";
     app.get(path, (req,res)=>{
-        res.redirect("https://documenter.getpostman.com/view/6914720/SVYqQfLL");
+        res.redirect("https://documenter.getpostman.com/view/6914720/SW7c3TRV");
     });
     
     
