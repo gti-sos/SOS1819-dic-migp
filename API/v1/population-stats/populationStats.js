@@ -39,7 +39,7 @@ module.exports = function(app, BASE_PATH){
         {
         country: "United States",
         year: 2018,
-        rpopulation: 327352000,
+        population: 327352000,
         density: 33,
         natality: 11.6,
         mortality: 8.52
