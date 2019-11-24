@@ -315,7 +315,8 @@ module.exports = function(app, BASE_PATH){
         
     });
     
-    path = BASE_PATH + "/mortality-stats";
+    //PUT a la ruta base
+    path = BASE_PATH + "/population-stats";
     app.put(path, (req, res) => {
         res.sendStatus(405);
     });
