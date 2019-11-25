@@ -117,7 +117,7 @@ app.controller("APICtrl",
         
               function drawRegionsMap() {
                   
-                var array = [['País', 'Poplación']];  
+                var array = [['País', 'Población']];  
                 var datos = rates.filter((c) => {
                    if(c.year==2018) {
                        return array.push([c.country, c.population]);
