@@ -21,7 +21,7 @@ angular.module("App",["ngRoute"]).config( function ($routeProvider){
     
     //Integraciones
     
-    .when("/integrations/unemployment-rates", {
+    .when("/integrations/population-stats", {
         controller : "APICtrl",
         templateUrl : "/integrations/views/myAPI.html"
     })
