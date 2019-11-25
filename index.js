@@ -2,13 +2,13 @@ var express = require("express");
 var API = require("./API");
 var bodyParser = require("body-parser");
 var path = require("path");
-//var request = require("request");
+var request = require("request");
 
-//var cors = require("cors");
+var cors = require("cors");
 
 var app = express();
 
-//app.use(cors());
+app.use(cors());
 
 const BASE_PATH = "/api";
 

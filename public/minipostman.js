@@ -13,7 +13,7 @@ angular.module("App",["ngRoute"]).config( function ($routeProvider){
         templateUrl: "principal.html"
     })
     
-    /*
+    
     .when("/integrations", {
         templateUrl: "/integrations/integrations.html"
     })
@@ -47,7 +47,7 @@ angular.module("App",["ngRoute"]).config( function ($routeProvider){
         templateUrl: "/integrations/views/about.html"
     });
 
-    */
+    
     
 });
 console.log("MiniPostmanApp initialized!");
