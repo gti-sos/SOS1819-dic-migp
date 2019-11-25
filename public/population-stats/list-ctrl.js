@@ -43,6 +43,7 @@ app.controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
 
         $http.post($scope.url, newRate).then(function(response) {
             console.log("Creado correctamente!");
+            console.log(newRate);
             $scope.mensaje = " Dato añadido a la base de datos";
             $scope.stateCode = response.status + ", " + response.statusText;
             refresh();
