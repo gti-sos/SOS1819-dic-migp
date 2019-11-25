@@ -248,10 +248,10 @@ module.exports = function(app, BASE_PATH){
     var newStat = {
         "country": posted.country,
         "year": Number.parseFloat(posted.year),
-        "population": Number.parseFloat(posted.rate),
-        "density": Number.parseFloat(posted.youthUnemployment),
-        "natality": Number.parseFloat(posted.maleUnemployment),
-        "mortality": Number.parseFloat(posted.femaleUnemployment),
+        "population": Number.parseFloat(posted.population),
+        "density": Number.parseFloat(posted.density),
+        "natality": Number.parseFloat(posted.natality),
+        "mortality": Number.parseFloat(posted.mortality),
     }
     
    
