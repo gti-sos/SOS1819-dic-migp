@@ -47,7 +47,9 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 
 client.connect(err => {
     console.log("Mangalper1 DB connected!");
+  
         app.listen(port, () => {
             console.log("Server ready on port " +port);
+         
         });
 });

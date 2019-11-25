@@ -234,6 +234,7 @@ module.exports = function(app, BASE_PATH){
                 }); 
     });
     
+
     // POST /population-stats
     path = BASE_PATH + "/population-stats";
     app.post(path, (req, res) => {
@@ -273,12 +274,14 @@ module.exports = function(app, BASE_PATH){
             }else{ 
                 populationStats.insert(newStat);
                 res.sendStatus(201);
+                
             } 
             });
         }
 
-        
+       
         });
+    console.log("H");
         
         //POST a un recurso  
     path = BASE_PATH + "/population-stats/:country/:year";
