@@ -19,7 +19,7 @@ API.populationStats(app, BASE_PATH);
 
 app.use("/", express.static(path.join(__dirname,"/public")));
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 //PROXY G12
 var APIG12 = "https://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats";
