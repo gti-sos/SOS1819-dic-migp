@@ -281,7 +281,7 @@ module.exports = function(app, BASE_PATH){
 
        
         });
-    console.log("H");
+   
         
         //POST a un recurso  
     path = BASE_PATH + "/population-stats/:country/:year";

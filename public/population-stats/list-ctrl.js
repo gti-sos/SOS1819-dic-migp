@@ -40,7 +40,6 @@ app.controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
 
         var newRate = $scope.newRate;
         console.log("añadiendo una nueva estadística " + JSON.stringify(newRate, null, 2));
-
         $http.post($scope.url, newRate).then(function(response) {
             console.log("Creado correctamente!");
             console.log(newRate);
@@ -87,7 +86,7 @@ app.controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
               
        });
     };
-   
+    
     $scope.deleterate = function(country, year) {
 
         $http.delete($scope.url+"/"+country+"/"+year).then(function(response) {
