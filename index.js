@@ -14,10 +14,11 @@ const BASE_PATH = "/api";
 
 app.use(bodyParser.json());
 
-//v1
-API.populationStats(app, BASE_PATH);
+
 
 app.use("/", express.static(path.join(__dirname,"/public")));
+
+
 
 var port = process.env.PORT || 8080;
 
@@ -27,7 +28,24 @@ var APIG12 = "https://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats";
         console.log('piped: '+ APIG12);
         req.pipe(request(APIG12)).pipe(res);
     })
-    
+
+const MongoClient = require("mongodb").MongoClient;
+const uri = "mongodb+srv://test:test@mangalper1-o8j8b.mongodb.net/mangalper1?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+
+
+client.connect(err => {
+    console.log("Mangalper1 DB connected!");
+  
+        app.listen(port, () => {
+            console.log("Server ready on port " +port);
+        });
+});
+
+
+//v1
+API.populationStats(app, BASE_PATH);
+
 //PROXY EXTERNA 1 - Weather
 var APIExt1 = "https://www.metaweather.com/api/location/753692/";
     app.use("/proxyExt1", function(req, res) {
@@ -40,16 +58,3 @@ var APIExt2 = "http://api.citybik.es/v2/networks?fields=location";
        console.log("piped: "+APIExt2);
        req.pipe(request(APIExt2)).pipe(res);
     });
-
-const MongoClient = require("mongodb").MongoClient;
-const uri = "mongodb+srv://test:test@mangalper1-o8j8b.mongodb.net/mangalper1?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-
-client.connect(err => {
-    console.log("Mangalper1 DB connected!");
-  
-        app.listen(port, () => {
-            console.log("Server ready on port " +port);
-         
-        });
-});
