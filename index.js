@@ -20,7 +20,7 @@ app.use("/", express.static(path.join(__dirname,"/public")));
 
 
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 
 //PROXY G12
 var APIG12 = "https://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats";
@@ -33,15 +33,16 @@ const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@mangalper1-o8j8b.mongodb.net/mangalper1?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
-
+console.log("A"); // A 
 client.connect(err => {
     console.log("Mangalper1 DB connected!");
-  
+console.log("B");//B  
         app.listen(port, () => {
             console.log("Server ready on port " +port);
+console.log("C");//C
         });
 });
-
+console.log("D");//D
 
 //v1
 API.populationStats(app, BASE_PATH);

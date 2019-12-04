@@ -1,16 +1,16 @@
 var app = angular.module("App");
-
+console.log("C");//C
 app.controller("LifeCtrl", 
     ["$scope", "$http", "$httpParamSerializer", function($scope, $http, $httpParamSerializer){
-         
+console.log("D");//D         
          
         var API = "https://sos1819-dic-migp.herokuapp.com/api/v1/population-stats";
         var API2 = "/proxyG12";
         
-        
+console.log("E");//E        
         $http.get(API).then(function(response) {
             $http.get(API2).then(function(response2) {
-                
+console.log("F");//F                
                 var rates = response.data;
                 var lifes = response2.data;
                 
@@ -43,7 +43,7 @@ app.controller("LifeCtrl",
                     data: [lifes[25].expectancy_man, lifes[28].expectancy_man, lifes[16].expectancy_man, lifes[10].expectancy_man,
                             lifes[15].expectancy_man, lifes[14].expectancy_man]
                   }, {
-                    name: 'Porcentaje desempleo',
+                    name: 'Porcentaje mortalidad',
                     data: [rates.filter((x) => x.country=="Spain" && x.year==2017)[0].mortality, 
                             rates.filter((x) => x.country=="Germany" && x.year==2017)[0].mortality, 
                             rates.filter((x) => x.country=="United States" && x.year==2017)[0].mortality, 
@@ -55,11 +55,12 @@ app.controller("LifeCtrl",
                 
                 
                
-              
+ console.log("G");//G             
                
             });
         });
         
-        
+console.log("H");//H        
 
 }]);
+console.log("I");//I

@@ -169,6 +169,14 @@ module.exports = function(app, BASE_PATH){
         var from = parseInt(req.query.from);
         var to = parseInt(req.query.to);
         
+        var country = req.query.country;
+        var year = parseInt(req.query.year);
+        var density = parseFloat(req.query.density);
+        var population = parseFloat(req.query.population);
+        var natality = parseFloat(req.query.natality);
+        var mortality = parseFloat(req.query.mortality);
+        
+        
         if(from && to) {
             populationStats.find({ year: {$gte: from, $lte: to}}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
                 if(populationStatsArray.length == 0) {
@@ -183,6 +191,102 @@ module.exports = function(app, BASE_PATH){
 
             
         });
+        } else if(country || year || density || population || density || natality || mortality) {
+              if(!year && !density && !population && !natality && !mortality) {
+                   populationStats.find({"country":country}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
+                    if(populationStatsArray.length == 0) {
+                    console.log("No se ha encontrado")
+                    res.sendStatus(404);
+                    } else { 
+                        res.send(populationStatsArray.map((p)=>{
+                            delete p._id;
+                         return p;
+                        }));
+                    } 
+                });
+                  
+              }  else if(!country && !density && !population && !natality && !mortality) {
+                   populationStats.find({"year":year}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
+                    if(populationStatsArray.length == 0) {
+                    console.log("No se ha encontrado")
+                    res.sendStatus(404);
+                    } else { 
+                        res.send(populationStatsArray.map((p)=>{
+                            delete p._id;
+                         return p;
+                        }));
+                    } 
+                });
+        } else if(!country && !year && !population && !natality && !mortality) {
+                   populationStats.find({"density":density}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
+                    if(populationStatsArray.length == 0) {
+                    console.log("No se ha encontrado")
+                    res.sendStatus(404);
+                    } else { 
+                        res.send(populationStatsArray.map((p)=>{
+                            delete p._id;
+                         return p;
+                        }));
+                    } 
+                });
+        }  else if(!country && !year && !density && !natality && !mortality) {
+                   populationStats.find({"population":population}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
+                    if(populationStatsArray.length == 0) {
+                    console.log("No se ha encontrado")
+                    res.sendStatus(404);
+                    } else { 
+                        res.send(populationStatsArray.map((p)=>{
+                            delete p._id;
+                         return p;
+                        }));
+                    } 
+                });
+        } else if(!country && !year && !population && !density && !mortality) {
+                   populationStats.find({"natality":natality}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
+                    if(populationStatsArray.length == 0) {
+                    console.log("No se ha encontrado")
+                    res.sendStatus(404);
+                    } else { 
+                        res.send(populationStatsArray.map((p)=>{
+                            delete p._id;
+                         return p;
+                        }));
+                    } 
+                });
+        } else if(!country && !year && !population && !natality && !density) {
+                   populationStats.find({"mortality":mortality}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
+
+                        if(populationStatsArray.length == 0) {
+                    console.log("No se ha encontrado")
+                    res.sendStatus(404);
+                    } else { 
+                        res.send(populationStatsArray.map((p)=>{
+                            delete p._id;
+                            return p;
+                         
+                        }));
+                    } 
+                });
+            
+        } else {
+            populationStats.find({"country":country, "year": year, "population":population, "natality": natality, "mortality":mortality}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
+                        if(populationStatsArray.length == 0) {
+                    console.log("No se ha encontrado")
+                    res.sendStatus(404);
+                    } else { 
+                        res.send(populationStatsArray.map((p)=>{
+                            delete p._id;
+                            return p;
+                         
+                        }));
+                    } 
+                });
+        }
+             
+
+        
+
+
         } else {
             populationStats.find({}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
                     res.send(populationStatsArray.map((p)=>{
@@ -236,6 +340,8 @@ module.exports = function(app, BASE_PATH){
     
     // POST /population-stats
     path = BASE_PATH + "/population-stats";
+
+console.log("E");//E
     app.post(path, (req, res) => {
     
     
@@ -255,13 +361,14 @@ module.exports = function(app, BASE_PATH){
     }
     
    
-    
+console.log("F");//F    
         if (posted.country == null || typeof posted.year == null ||posted.population == null || posted.density == null || posted.natality == null || posted.mortality == null 
             || posted.country == "" || posted.year == "" || posted.population == "" || posted.density == "" || posted.natality == "" || posted.mortality == ""
             ){
                 res.sendStatus(400);
         }else{
             populationStats.find({}).toArray((error, populationStatsArray)=>{
+console.log("G");//G
             for(i=0;i<populationStatsArray.length;i++)
                 if (populationStatsArray[i].country==posted.country && populationStatsArray[i].year==posted.year)
                     coincide = true;
@@ -273,12 +380,14 @@ module.exports = function(app, BASE_PATH){
             }else{ 
                 populationStats.insert(newStat);
                 res.sendStatus(201);
-                
+console.log("H");//H                
             } 
             });
+console.log("I");//I
         }
        
         });
+console.log("J");//J
         
         //POST a un recurso  
     path = BASE_PATH + "/population-stats/:country/:year";
@@ -298,6 +407,7 @@ module.exports = function(app, BASE_PATH){
     
     // PUT /population-stats/Spain/2018
     path = BASE_PATH + "/population-stats/:country/:year";
+
     app.put(path, (req, res) => {
         var year = parseInt(req.params.year);
         var country = req.params.country;
@@ -306,10 +416,12 @@ module.exports = function(app, BASE_PATH){
         if(updatedData.year != year || updatedData.country != country 
             || updatedData.population == "" || updatedData.density == "" || updatedData.natality == "" || updatedData.mortality == "" )
             res.sendStatus(400);
-        else
+        else{
             populationStats.update({"country": country, "year": year}, updatedData);
             res.sendStatus(200);
-        
+
+        }
+
         
         
         

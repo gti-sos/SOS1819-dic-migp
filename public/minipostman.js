@@ -1,4 +1,7 @@
  /*global angular*/
+
+console.log("A"); //A
+
 angular.module("App",["ngRoute"]).config( function ($routeProvider){
     $routeProvider
     .when("/ui/v1/population-stats", {
@@ -51,3 +54,5 @@ angular.module("App",["ngRoute"]).config( function ($routeProvider){
     
 });
 console.log("MiniPostmanApp initialized!");
+
+console.log("B");//B
