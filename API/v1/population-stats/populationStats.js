@@ -413,6 +413,15 @@ console.log("J");//J
         var country = req.params.country;
         var updatedData = req.body;
         
+        updatedData = {
+        "country": updatedData.country,
+        "year": Number.parseFloat(updatedData.year),
+        "population": Number.parseFloat(updatedData.population),
+        "density": Number.parseFloat(updatedData.density),
+        "natality": Number.parseFloat(updatedData.natality),
+        "mortality": Number.parseFloat(updatedData.mortality),
+    }
+        
         if(updatedData.year != year || updatedData.country != country 
             || updatedData.population == "" || updatedData.density == "" || updatedData.natality == "" || updatedData.mortality == "" )
             res.sendStatus(400);
