@@ -36,6 +36,26 @@ tr:nth-child(even) {background-color: #f2f2f2;}
             </div>
         </div>
     </div>
+    
+         <h6>Búsqueda por campos del recurso:</h6>
+        </div>
+        <div class="row">
+            <div>
+                <select class="form-control" ng-model="campo" ng-init="campo='country'">
+                                <option value="" disabled selected>Campo Búsqueda</option>
+                                <option value="country">País</option>
+                                <option value="year">Año</option>
+                                <option value="population">Población</option>
+                                <option value="density">Densidad</option>
+                                <option value="natality">Natalidad</option>
+                                <option value="mortality">Mortalidad</option>
+                </select>
+            </div>
+            <div><input placeholder="Valor" name="valor" class="form-control" ng-model="valor" /></div>
+            <div><button class="btn btn-outline-primary" ng-click="busquedaPorCampo()">Buscar</button></div>
+        
+        </div>
+    </div>
 
 <div style="overflow-x:auto;">
     <table class="table">

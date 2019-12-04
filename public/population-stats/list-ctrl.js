@@ -192,6 +192,19 @@ app.controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
             
     }
     
+    $scope.busquedaPorCampo = function() {
+        $http.get(API + "?" + $scope.campo + "=" + $scope.valor).then(function(response) {
+                        $scope.populationStats = response.data;
+            console.log("Búsqueda realizada" + JSON.stringify(response.data, null, 2));
+            $scope.populationStats = response.data;
+            $scope.mensaje = "Búsqueda realizada con éxito";
+            $scope.stateCode = response.status + ", " + response.statusText;
+        }, function(error) {
+            $scope.stateCode = error.status + ", " + error.statusText;
+            $scope.mensaje = "No se encuentran datos";
+        });
+    }
+    
     refresh();
     
 }]);

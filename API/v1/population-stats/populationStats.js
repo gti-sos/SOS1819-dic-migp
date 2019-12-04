@@ -1,4 +1,5 @@
 
+
 const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@mangalper1-o8j8b.mongodb.net/mangalper1?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
@@ -263,7 +264,6 @@ module.exports = function(app, BASE_PATH){
                         res.send(populationStatsArray.map((p)=>{
                             delete p._id;
                             return p;
-                         
                         }));
                     } 
                 });
@@ -425,7 +425,7 @@ console.log("J");//J
         if(updatedData.year != year || updatedData.country != country 
             || updatedData.population == "" || updatedData.density == "" || updatedData.natality == "" || updatedData.mortality == "" )
             res.sendStatus(400);
-        else{
+         
             populationStats.update({"country": country, "year": year}, updatedData);
             res.sendStatus(200);
 
