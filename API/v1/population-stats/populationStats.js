@@ -229,7 +229,7 @@ module.exports = function(app, BASE_PATH){
                          return p;
                         }));
                     } 
-                });
+                }); 
         }  else if(!country && !year && !density && !natality && !mortality) {
                    populationStats.find({"population":population}).skip(offset).limit(limit).toArray((err, populationStatsArray)=>{
                     if(populationStatsArray.length == 0) {
@@ -425,7 +425,7 @@ console.log("J");//J
         if(updatedData.year != year || updatedData.country != country 
             || updatedData.population == "" || updatedData.density == "" || updatedData.natality == "" || updatedData.mortality == "" )
             res.sendStatus(400);
-         
+        else{
             populationStats.update({"country": country, "year": year}, updatedData);
             res.sendStatus(200);
 
