@@ -5,7 +5,7 @@
   - [Manuel Ivan Galvez Perez](https://github.com/mangalper1)
 - **Project description**:  Compare the population stats on different countries.
 - **Repository**: [gti-sos/SOS1819-dic-migp](https://github.com/gti-sos/SOS1819-dic-migp)
-- **URL**: https://sos1819-dic-migp.herokuapp.com/#!//
+- **URL**: https://sos1819-dic-migp.herokuapp.com/#!/
 -  **APIs**:
     - [https://sos1819-dic-migp.herokuapp.com/api/v1/population-stats/docs](https://sos1819-dic-migp.herokuapp.com/api/v1/population-stats) (developed by [Manuel Iván Gálvez Pérez](https://github.com/mangalper1))
     
